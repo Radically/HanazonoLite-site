@@ -3,6 +3,35 @@ module.exports = {
     title: "Hanazono Lite",
   },
   plugins: [
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `markdown-snippets`,
+        path: `${__dirname}/src/markdown-snippets`,
+      },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          "gatsby-remark-copy-linked-files",
+          {
+            resolve: "gatsby-remark-external-links",
+            options: {
+              target: "_blank",
+              rel: "noopener noreferrer",
+            },
+          },
+        ],
+      },
+    },
+    {
+      resolve: `gatsby-styled-components-dark-mode`,
+      options: {
+        dark: { mainColor: "#4db6ac", backgroundColor: "#303030" },
+        light: { mainColor: "#00695c", backgroundColor: "#fafafa" },
+      },
+    },
     "gatsby-plugin-styled-components",
     "gatsby-plugin-image",
     "gatsby-plugin-react-helmet",

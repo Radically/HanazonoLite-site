@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "description": "Hanazono Lite",
-  "author": "Bryan Kok",
+  "author": "Bryan Kok <bryan.wyern1@gmail.com>",
   "keywords": [
     "gatsby"
   ],
   "scripts": {
+    "preinstall": "sh fetch_data.sh",
     "develop": "gatsby develop",
     "start": "gatsby develop",
     "build": "gatsby build",
@@ -15,6 +16,7 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "@fontsource/open-sans": "^4.2.2",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "babel-plugin-styled-components": "^1.12.0",
@@ -26,11 +28,21 @@
     "gatsby-plugin-sharp": "^3.1.2",
     "gatsby-plugin-sitemap": "^3.1.0",
     "gatsby-plugin-styled-components": "^4.1.0",
-    "gatsby-source-filesystem": "^3.1.0",
+    "gatsby-plugin-use-query-params": "^1.0.1",
+    "gatsby-remark-copy-linked-files": "^3.2.0",
+    "gatsby-remark-external-links": "0.0.4",
+    "gatsby-source-filesystem": "^3.2.0",
+    "gatsby-styled-components-dark-mode": "^2.0.3",
+    "gatsby-transformer-json": "^3.2.0",
+    "gatsby-transformer-remark": "^3.2.0",
     "gatsby-transformer-sharp": "^3.1.0",
+    "hanazono-gothic-lite-cjk-tc": "https://github.com/Radically/HanazonoLite-webfont/releases/download/release-1.0.4/hanazono-gothic-lite-cjk-tc-0.0.1.tgz",
+    "hanazono-mincho-lite-cjk-tc": "https://github.com/Radically/HanazonoLite-webfont/releases/download/release-1.0.4/hanazono-mincho-lite-cjk-tc-0.0.1.tgz",
     "react": "^17.0.1",
+    "react-contenteditable": "^3.3.5",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
-    "styled-components": "^5.2.1"
+    "styled-components": "^5.2.1",
+    "use-query-params": "^1.2.2"
   }
 }
