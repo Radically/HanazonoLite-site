@@ -6,9 +6,7 @@ import { DIRECTION, LANGS, SAMPLE_TEXT, TYPEFACES, WEIGHT } from "../constants";
 
 import { LocaleRadioGroup, SelectButton, SelectLabel } from "./common";
 
-// import ContentEditable from "./contenteditable";
-
-import ContentEditable from "react-contenteditable";
+import ContentEditable from "./contenteditable";
 
 const Control = styled.div`
   padding: 5px;
@@ -141,10 +139,10 @@ const DemoLocalesContainer = styled.div`
   display: flex;
   // margin-bottom: 10px;
   flex-direction: ${(props) =>
-    props.direction === DIRECTION.HORIZONTAL ? "column" : "row"};
+    props.direction === DIRECTION.HORIZONTAL ? "column" : "row-reverse"};
   color: ${(props) => (props.theme.isDark ? "white" : "black")};
-  overflow-x: ${(props) =>
-    props.direction === DIRECTION.VERTICAL ? "overlay" : "auto"};
+  height: ${(props) => props.direction === DIRECTION.VERTICAL && "550px"};
+  overflow-x: ${(props) => props.direction === DIRECTION.VERTICAL && "scroll"};
 `;
 
 export default (props) => {
@@ -156,8 +154,6 @@ export default (props) => {
   const [demoText, setDemoText] = useState(SAMPLE_TEXT);
 
   const darkModeHook = useStyledDarkMode();
-  console.log("darkmode value");
-  console.log(darkModeHook);
 
   const { isDark } = darkModeHook;
 
@@ -179,10 +175,17 @@ export default (props) => {
       <DemoLocalesContainer direction={direction}>
         {LANGS.map((lang, idx) => (
           <div
+            // key={`${lang}-${direction}`}
+            key={lang}
             lang={lang}
             style={{
               minHeight: "80px",
-              width: "100%",
+              height: "100%",
+              width: direction === DIRECTION.HORIZONTAL && "100%",
+              /* minWidth:
+                direction === DIRECTION.VERTICAL &&
+                `calc(100% / ${LANGS.length})`, */
+              height: direction === DIRECTION.VERTICAL && "100%",
               padding: "10px",
               boxSizing: "border-box",
               borderBottom:
@@ -193,47 +196,37 @@ export default (props) => {
           >
             <div>{lang}</div>
             <ContentEditable
-              key={weight}
-              //   contentEditable
+              // key={`${weight}-${direction}`}
+              direction={direction}
+              typeface={typeface}
               onChange={({ target: { value } }) => {
                 setDemoText(value);
               }}
               style={{
                 boxSizing: "border-box",
+                width:
+                  direction === DIRECTION.VERTICAL ? "max-content" : "100%",
                 padding: "5px",
                 fontSize: `${fontSize}pt`,
                 fontFamily: `Hanazono ${
                   typeface === TYPEFACES.MINCHO ? "Mincho" : "Gothic"
                 } Lite CJK`,
                 fontWeight: weight === WEIGHT.BOLD ? "bold" : "regular",
-                width: "100%",
+
+                // minWidth:
+                //   direction === DIRECTION.VERTICAL &&
+                //   `calc(100% / ${LANGS.length})`,
+
+                maxHeight: direction === DIRECTION.VERTICAL && "500px",
+                wordBreak: "break-all",
                 background: "inherit",
                 outline: "none",
-                resize: "none",
+                // resize: "none",
 
-                // writingMode: direction === DIRECTION.VERTICAL && "vertical-rl",
+                writingMode: direction === DIRECTION.VERTICAL && "vertical-rl",
               }}
               html={demoText}
             />
-            {/* <textarea
-              contentEditable
-              value={demoText}
-              onChange={({ target: { value } }) => {
-                setDemoText(value);
-              }}
-              style={{
-                boxSizing: "border-box",
-                fontSize: `${fontSize}pt`,
-                fontFamily: `Hanazono ${
-                  typeface === TYPEFACES.MINCHO ? "Mincho" : "Gothic"
-                } Lite CJK`,
-                background: "inherit",
-                width: "100%",
-                resize: "none",
-                border: "1px solid red",
-                outline: "none",
-              }}
-            /> */}
           </div>
         ))}
       </DemoLocalesContainer>

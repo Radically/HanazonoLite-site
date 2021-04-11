@@ -22,6 +22,7 @@ const RadioGroup = (props) => {
       <LocaleRadioGroup id="locale-group">
         {LOCALES.map((locale) => (
           <SelectButton
+            key={locale}
             selected={locale === selectedLocale}
             onClick={() => {
               onLocaleChange(locale);
