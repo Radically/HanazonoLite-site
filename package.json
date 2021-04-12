@@ -48,5 +48,6 @@
     "react-with-forwarded-ref": "^0.3.3",
     "styled-components": "^5.2.1",
     "use-query-params": "^1.2.2"
-  }
+  },
+  "devDependencies": {}
 }

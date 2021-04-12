@@ -137,11 +137,10 @@ const ControlsContainer = styled.div`
 
 const DemoLocalesContainer = styled.div`
   display: flex;
-  // margin-bottom: 10px;
   flex-direction: ${(props) =>
     props.direction === DIRECTION.HORIZONTAL ? "column" : "row-reverse"};
+  width: 100%;
   color: ${(props) => (props.theme.isDark ? "white" : "black")};
-  height: ${(props) => props.direction === DIRECTION.VERTICAL && "550px"};
   overflow-x: ${(props) => props.direction === DIRECTION.VERTICAL && "scroll"};
 `;
 
@@ -172,62 +171,43 @@ export default (props) => {
         />
       </ControlsContainer>
 
-      <DemoLocalesContainer direction={direction}>
+      <DemoLocalesContainer id="demo-locales-container" direction={direction}>
         {LANGS.map((lang, idx) => (
-          <div
-            // key={`${lang}-${direction}`}
-            key={lang}
-            lang={lang}
+          <ContentEditable
+            key={`${lang}-${weight}-${direction}-${typeface}-${fontSize}`}
+            lang={`${lang}`}
+            onChange={({ target: { value } }) => {
+              setDemoText(value);
+            }}
             style={{
-              minHeight: "80px",
-              height: "100%",
-              width: direction === DIRECTION.HORIZONTAL && "100%",
-              /* minWidth:
-                direction === DIRECTION.VERTICAL &&
-                `calc(100% / ${LANGS.length})`, */
-              height: direction === DIRECTION.VERTICAL && "100%",
-              padding: "10px",
+              position: "relative",
               boxSizing: "border-box",
+              flex: 1,
+              padding: "5px",
+              fontSize: `${fontSize}pt`,
+              fontFamily: `Hanazono ${
+                typeface === TYPEFACES.MINCHO ? "Mincho" : "Gothic"
+              } Lite CJK`,
+              fontWeight: weight === WEIGHT.BOLD ? "bold" : "regular",
+
+              height: direction === DIRECTION.VERTICAL && "500px",
+              wordBreak: "break-all",
+              background: "inherit",
+              outline: "none",
+              marginTop: "1.5rem",
+              padding: "15px",
+
               borderBottom:
                 direction === DIRECTION.HORIZONTAL && "1px solid currentColor",
               borderRight:
-                direction === DIRECTION.VERTICAL && "1px solid currentColor",
+                idx > 0 &&
+                direction === DIRECTION.VERTICAL &&
+                "1px solid currentColor",
+
+              writingMode: direction === DIRECTION.VERTICAL && "vertical-rl",
             }}
-          >
-            <div>{lang}</div>
-            <ContentEditable
-              // key={`${weight}-${direction}`}
-              direction={direction}
-              typeface={typeface}
-              onChange={({ target: { value } }) => {
-                setDemoText(value);
-              }}
-              style={{
-                boxSizing: "border-box",
-                width:
-                  direction === DIRECTION.VERTICAL ? "max-content" : "100%",
-                padding: "5px",
-                fontSize: `${fontSize}pt`,
-                fontFamily: `Hanazono ${
-                  typeface === TYPEFACES.MINCHO ? "Mincho" : "Gothic"
-                } Lite CJK`,
-                fontWeight: weight === WEIGHT.BOLD ? "bold" : "regular",
-
-                // minWidth:
-                //   direction === DIRECTION.VERTICAL &&
-                //   `calc(100% / ${LANGS.length})`,
-
-                maxHeight: direction === DIRECTION.VERTICAL && "500px",
-                wordBreak: "break-all",
-                background: "inherit",
-                outline: "none",
-                // resize: "none",
-
-                writingMode: direction === DIRECTION.VERTICAL && "vertical-rl",
-              }}
-              html={demoText}
-            />
-          </div>
+            html={demoText}
+          />
         ))}
       </DemoLocalesContainer>
     </>
