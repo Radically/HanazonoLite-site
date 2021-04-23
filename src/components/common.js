@@ -2,7 +2,14 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
-  width: 75%;
+  flex-direction: column;
+
+  width: 90%;
+  @media screen and (min-width: 1200px) {
+    width: 75%;
+    flex-direction: row;
+  }
+
   //   margin: 0 10px 0 10px;
   margin: auto;
 
@@ -25,6 +32,8 @@ export const Container = styled.div`
 
 export const Blurb = styled.section`
   font-size: 0.85rem;
+  word-break: break-all;
+  min-width: 0;
   color: ${(props) => (props.theme.isDark ? "white" : "black")};
 
   .bold {

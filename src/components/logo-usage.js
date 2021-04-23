@@ -11,6 +11,15 @@ import Usage from "./usage";
   min-height: 45px;
 `; */
 
+const LogoDescContainer = styled.div`
+  flex: 0.4;
+  min-width: 300px;
+
+  @media screen and (min-width: 1200px) {
+    padding-right: 15px;
+  }
+`;
+
 const LiteEditionText = styled.div`
   font-family: Hanazono Mincho Lite CJK;
   font-size: 2rem;
@@ -49,7 +58,7 @@ export default function LogoUsage() {
 
   return (
     <Container>
-      <div style={{ width: "40%", minWidth: "400px" }}>
+      <LogoDescContainer>
         <div style={{ display: "flex", alignItems: "flex-end" }}>
           <Logo />
           <LiteEditionText>輕量版</LiteEditionText>
@@ -62,8 +71,15 @@ export default function LogoUsage() {
         <Blurb
           dangerouslySetInnerHTML={{ __html: blurb1.markdownRemark.html }}
         ></Blurb>
-      </div>
-      <div id="usage-container" style={{ flex: 1, border: "0px solid black" }}>
+      </LogoDescContainer>
+      <div
+        id="usage-container"
+        style={{
+          flex: 0.6,
+          minWidth: 0,
+          border: "0px solid black",
+        }}
+      >
         <Usage />
       </div>
     </Container>

@@ -20,6 +20,8 @@ It is unclear whether, say, `u8ade && locl=vi (nonexistent) -> u8ade (nonexisten
 
 Simply leaving those glyphs unpopulated, thus allowing the user to choose a suitable font stack, is another possibility, although the `locl` feature for that codepoint would no longer work because there is no glyph to substitute for anymore!
 
+Charts showing which locale-specific glyphs are available in the URO and whether they have been added to GlyphWiki are available [here](https://en.glyphwiki.org/wiki/Group:MulticolumnCharts).
+
 ### Gothic font is missing lots of strokes!
 
 Yes, that's probably why `kage.kShotai = kage.kGothic` isn't documented yet. I'm keeping track of the gothic related issues I've found [here](https://github.com/Radically/HanazonoLite/issues/13).

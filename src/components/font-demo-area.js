@@ -8,6 +8,8 @@ import { LocaleRadioGroup, SelectButton, SelectLabel } from "./common";
 
 import ContentEditable from "./contenteditable";
 
+import { Container } from "./common";
+
 const Control = styled.div`
   padding: 5px;
 `;
@@ -130,11 +132,6 @@ const Controls = (props) => {
   background-color: red;
 `; */
 
-const ControlsContainer = styled.div`
-  width: 75%;
-  margin: auto;
-`;
-
 const DemoLocalesContainer = styled.div`
   display: flex;
   flex-direction: ${(props) =>
@@ -158,7 +155,7 @@ export default (props) => {
 
   return (
     <>
-      <ControlsContainer>
+      <Container>
         <Controls
           selectedTypeface={typeface}
           onTypefaceChange={setTypeface}
@@ -169,7 +166,7 @@ export default (props) => {
           weight={weight}
           setWeight={setWeight}
         />
-      </ControlsContainer>
+      </Container>
 
       <DemoLocalesContainer id="demo-locales-container" direction={direction}>
         {LANGS.map((lang, idx) => (

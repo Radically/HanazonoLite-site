@@ -2,6 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 import LogoUsage from "../components/logo-usage";
 import NavBar from "../components/navbar";
+import Footer from "../components/footer";
 import FontDemoArea from "../components/font-demo-area";
 import MoreInfo from "../components/faq-area";
 
@@ -31,6 +32,7 @@ const IndexPage = () => {
       <FontDemoArea />
 
       <MoreInfo />
+      <Footer />
     </MainContainer>
   );
 };
