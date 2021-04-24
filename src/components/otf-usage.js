@@ -3,7 +3,11 @@ import styled from "styled-components";
 import { TYPEFACES } from "../constants";
 import { formatBytes } from "../utils";
 
-import { LoadingYetToCompleteContainer } from "./common";
+import {
+  LoadingYetToCompleteContainer,
+  ReleaseContainer,
+  ReleaseDate,
+} from "./common";
 import Spinner from "./spinner";
 
 const LOADING_STATE = {
@@ -25,16 +29,6 @@ const DownloadDetails = styled.div`
   grid-row-gap: 0.5rem;
   grid-column-gap: 1rem;
   max-width: 350px;
-`;
-
-const ReleaseContainer = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const ReleaseDate = styled.span`
-  font-size: 0.7rem;
-  height: 20px;
 `;
 
 const DownloadLink = styled.div`

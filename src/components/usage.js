@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { LocaleRadioGroup, SelectButton, SelectLabel } from "./common";
+import {
+  useQueryParam,
+  withDefault,
+  NumberParam,
+  StringParam,
+  BooleanParam,
+} from "use-query-params";
 import { FORMATS, TYPEFACES, LOCALES } from "../constants";
 
 import OTFUsage from "./otf-usage";
@@ -120,11 +127,20 @@ const RadioGroup = (props) => {
 };
 
 export default function Usage() {
-  const [locale, setLocale] = useState("HK");
-  const [typeface, setTypeface] = useState(TYPEFACES.MINCHO);
-  const [cjk, setCJK] = useState(true);
+  const [locale, setLocale] = useQueryParam(
+    "loc",
+    withDefault(StringParam, "HK")
+  );
+  const [typeface, setTypeface] = useQueryParam(
+    "face",
+    withDefault(NumberParam, TYPEFACES.MINCHO)
+  );
+  const [cjk, setCJK] = useQueryParam("cjk", withDefault(BooleanParam, true));
 
-  const [format, setFormat] = useState(FORMATS.OTF);
+  const [format, setFormat] = useQueryParam(
+    "fmt",
+    withDefault(NumberParam, FORMATS.OTF)
+  );
 
   return (
     <div>

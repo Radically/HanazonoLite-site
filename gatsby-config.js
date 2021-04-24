@@ -4,6 +4,12 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: "@transfusion/gatsby-plugin-use-query-params",
+      options: {
+        preventScrollIfIncludes: ["?"],
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `markdown-snippets`,

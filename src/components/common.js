@@ -98,3 +98,13 @@ export const LoadingYetToCompleteContainer = styled.div`
     color: ${(props) => props.theme.mainColor};
   }
 `;
+
+export const ReleaseContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const ReleaseDate = styled.span`
+  font-size: 0.7rem;
+  height: 20px;
+`;

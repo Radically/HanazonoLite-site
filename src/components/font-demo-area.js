@@ -4,6 +4,14 @@ import { useStyledDarkMode } from "gatsby-styled-components-dark-mode";
 
 import { DIRECTION, LANGS, SAMPLE_TEXT, TYPEFACES, WEIGHT } from "../constants";
 
+import {
+  useQueryParam,
+  withDefault,
+  NumberParam,
+  StringParam,
+  BooleanParam,
+} from "use-query-params";
+
 import { LocaleRadioGroup, SelectButton, SelectLabel } from "./common";
 
 import ContentEditable from "./contenteditable";
@@ -142,10 +150,22 @@ const DemoLocalesContainer = styled.div`
 `;
 
 export default (props) => {
-  const [typeface, setTypeface] = useState(TYPEFACES.MINCHO);
-  const [fontSize, setFontSize] = useState(20);
-  const [direction, setDirection] = useState(DIRECTION.HORIZONTAL);
-  const [weight, setWeight] = useState(WEIGHT.REGULAR);
+  const [typeface, setTypeface] = useQueryParam(
+    "dface",
+    withDefault(NumberParam, TYPEFACES.MINCHO)
+  );
+  const [fontSize, setFontSize] = useQueryParam(
+    "dsize",
+    withDefault(NumberParam, 20)
+  );
+  const [direction, setDirection] = useQueryParam(
+    "ddir",
+    withDefault(NumberParam, DIRECTION.HORIZONTAL)
+  );
+  const [weight, setWeight] = useQueryParam(
+    "dweight",
+    withDefault(NumberParam, WEIGHT.REGULAR)
+  );
 
   const [demoText, setDemoText] = useState(SAMPLE_TEXT);
 
