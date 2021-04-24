@@ -86,3 +86,15 @@ export const SelectLabel = styled.div`
   padding-bottom: 5px;
   color: ${(props) => (props.theme.isDark ? "white" : "black")};
 `;
+
+export const LoadingYetToCompleteContainer = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+
+  a {
+    color: ${(props) => props.theme.mainColor};
+  }
+`;

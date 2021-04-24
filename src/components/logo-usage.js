@@ -57,7 +57,7 @@ export default function LogoUsage() {
   console.log(blurb1);
 
   return (
-    <Container>
+    <Container style={{ paddingBottom: "10px" }}>
       <LogoDescContainer>
         <div style={{ display: "flex", alignItems: "flex-end" }}>
           <Logo />

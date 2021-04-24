@@ -3,6 +3,9 @@ import styled from "styled-components";
 import { TYPEFACES } from "../constants";
 import { formatBytes } from "../utils";
 
+import { LoadingYetToCompleteContainer } from "./common";
+import Spinner from "./spinner";
+
 const LOADING_STATE = {
   LOADING: 0,
   COMPLETED: 1,
@@ -43,7 +46,8 @@ export default (props) => {
   const [loading, setLoading] = useState(LOADING_STATE.COMPLETED);
 
   const [release, setRelease] = useState({ published_at: 0, assets: [] });
-  useEffect(async () => {
+
+  const performLoad = async () => {
     try {
       setLoading(LOADING_STATE.LOADING);
       const release = await (
@@ -55,16 +59,15 @@ export default (props) => {
       release.assets = release.assets.filter(
         ({ content_type }) => content_type === "font/otf"
       );
-      //   console.log(await releases.json());
-      // console.log(assets);
-      // setAssets(assets);
       setRelease(release);
       setLoading(LOADING_STATE.COMPLETED);
     } catch (error) {
       console.log(error);
       setLoading(LOADING_STATE.FAILED);
     }
-  }, []);
+  };
+
+  useEffect(performLoad, []);
 
   const search_regex = new RegExp(
     `Hana${typeface === TYPEFACES.MINCHO ? "Min" : "Goth"}Lite${
@@ -85,37 +88,59 @@ export default (props) => {
       {/* [![GitHub
       release](https://img.shields.io/github/release/Radically/HanazonoLite.svg)](https://GitHub.com/Radically/HanazonoLite/releases/) */}
 
-      <ReleaseContainer>
-        <div style={{ marginRight: "10px" }}>
-          <a
-            target="_blank"
-            href="https://github.com/Radically/HanazonoLite/releases/latest"
-          >
-            <img src="https://img.shields.io/github/release/Radically/HanazonoLite.svg" />
-          </a>
-        </div>
+      {loading === LOADING_STATE.LOADING && (
+        <LoadingYetToCompleteContainer>
+          <Spinner />
+        </LoadingYetToCompleteContainer>
+      )}
 
-        <ReleaseDate>
-          {new Date(release.published_at).toLocaleString()}
-        </ReleaseDate>
-      </ReleaseContainer>
-      <DownloadDetails>
-        <div>Name</div>
-        <div>Size</div>
-        {otfassets.map(({ name, browser_download_url, url, size }) => (
-          <>
-            <DownloadLink>
-              <a target="_blank" href={browser_download_url}>
-                {name}
+      {loading === LOADING_STATE.FAILED && (
+        <LoadingYetToCompleteContainer>
+          <span>Loading failed.&nbsp;</span>
+          <a
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+              performLoad();
+              return false;
+            }}
+          >
+            Refresh
+          </a>
+        </LoadingYetToCompleteContainer>
+      )}
+
+      {loading === LOADING_STATE.COMPLETED && (
+        <>
+          <ReleaseContainer>
+            <div style={{ marginRight: "10px" }}>
+              <a
+                target="_blank"
+                href="https://github.com/Radically/HanazonoLite/releases/latest"
+              >
+                <img src="https://img.shields.io/github/release/Radically/HanazonoLite.svg" />
               </a>
-            </DownloadLink>
-            <div>{formatBytes(size)}</div>
-          </>
-        ))}
-      </DownloadDetails>
-      {/* {otfassets.map(({ name, url }) => (
-        <div>{name}</div>
-      ))} */}
+            </div>
+
+            <ReleaseDate>
+              {new Date(release.published_at).toLocaleString()}
+            </ReleaseDate>
+          </ReleaseContainer>
+          <DownloadDetails>
+            <div>Name</div>
+            <div>Size</div>
+            {otfassets.map(({ name, browser_download_url, url, size }) => (
+              <>
+                <DownloadLink>
+                  <a target="_blank" href={browser_download_url}>
+                    {name}
+                  </a>
+                </DownloadLink>
+                <div>{formatBytes(size)}</div>
+              </>
+            ))}
+          </DownloadDetails>
+        </>
+      )}
     </OTFUsageContainer>
   );
 };
