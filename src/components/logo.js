@@ -12,7 +12,7 @@ const TealShadowSVGPath = styled(TealSVGPath)`
 `;
 
 const WhiteSVGPath = styled.path`
-  fill: white;
+  fill: #ffffff;
 `;
 
 const WhiteShadowSVGPath = styled(WhiteSVGPath)`
