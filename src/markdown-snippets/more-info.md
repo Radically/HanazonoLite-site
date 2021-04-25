@@ -1,6 +1,6 @@
 ### There are incorrect glyphs in my locale!
 
-<sup>N.B. I am a newcomer to GlyphWiki myself, so the observations below may not be entirely correct, and there may be exceptions to the rule given the nature of collaborative editing. I've [created an issue here for further discussion](<(https://github.com/Radically/HanazonoLite/issues/14)>) and observations on locale-specific needs.</sup>
+<sup>N.B. I am a newcomer to GlyphWiki myself, so the observations below may not be entirely correct, and there may be exceptions to the rule given the nature of collaborative editing. I've [created an issue here for further discussion](https://github.com/Radically/HanazonoLite/issues/14) and observations on locale-specific needs.</sup>
 
 In GlyphWiki, default names (e.g. `u7940`) are usually aliased to the J-source variant or even the `-jv` variant if one exists; thus `u7940` is aliased to `u7940-j`, and `u6eb8` is aliased to `u6eb8-jv` as of the time of writing, otherwise it is aliased to the primary locale from which it originates.
 

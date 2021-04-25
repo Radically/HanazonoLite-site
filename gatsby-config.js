@@ -1,12 +1,12 @@
 module.exports = {
-  pathPrefix: "/HanazonoLite",
+  pathPrefix: "/hanazonolite",
   siteMetadata: {
     title: "Hanazono Lite",
     description:
       "Lightweight, automatically generated version of the pan-CJK HanaMin font",
-    url: "https://radically.github.io/HanazonoLite",
+    url: "https://radically.github.io/hanazonolite",
     twitterUsername: "@transfusian",
-    siteUrl: "https://radically.github.io/HanazonoLite",
+    siteUrl: "https://radically.github.io/hanazonolite",
     image: "/ogp.png",
   },
   plugins: [

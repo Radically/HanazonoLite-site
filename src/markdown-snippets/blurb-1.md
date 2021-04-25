@@ -1,7 +1,7 @@
 [![HanazonoLite Badge](https://github.com/Radically/HanazonoLite/actions/workflows/generate-fonts-release.yml/badge.svg)](https://github.com/Radically/HanazonoLite) <iframe src="https://ghbtns.com/github-btn.html?user=radically&repo=hanazonolite&type=star&count=true" frameborder="0" scrolling="0" width="60" height="20" title="GitHub"></iframe>
 
 125,000+ codepoints covered, spanning [**298/308** printable blocks](block_allocation.csv), incl.
-Ext A to G. That's [86% of the Unicode 13.0 space](https://github.com/Radically/HanazonoLite/wiki/Unicode-Coverage-Statistics). 156,000+ unique CIDs
+Ext A to G. That's [86% of the Unicode 13.0 space](https://github.com/Radically/hanazonolite/wiki/Unicode-Coverage-Statistics). 156,000+ unique CIDs
 including locale-specific glyphs accessible via the OpenType `locl` GSUB
 feature.
 
