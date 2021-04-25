@@ -9,6 +9,7 @@ import MoreInfo from "../components/faq-area";
 import "hanazono-mincho-lite-cjk-tc";
 import "hanazono-gothic-lite-cjk-tc";
 import "@fontsource/open-sans";
+import SEO from "../components/seo";
 
 /* const pageStyles = {
   fontFamily: "sans-serif",
@@ -18,6 +19,7 @@ import "@fontsource/open-sans";
 const MainContainer = styled.main`
   font-family: var(--default-latin-sans);
   min-height: 100%;
+  transition: background-color 0.3s;
   background-color: ${(props) => props.theme.backgroundColor};
 `;
 
@@ -25,6 +27,7 @@ const MainContainer = styled.main`
 const IndexPage = () => {
   return (
     <MainContainer>
+      <SEO />
       <title>Hanazono Lite</title>
       <NavBar />
       <LogoUsage />

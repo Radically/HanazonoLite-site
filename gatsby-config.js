@@ -1,6 +1,12 @@
 module.exports = {
   siteMetadata: {
     title: "Hanazono Lite",
+    description:
+      "Lightweight, automatically generated version of the pan-CJK HanaMin font",
+    url: "https://radically.github.io/hanazonolite",
+    twitterUsername: "@transfusian",
+    siteUrl: "https://radically.github.io/hanazonolite",
+    image: "/ogp.png",
   },
   plugins: [
     {

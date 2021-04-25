@@ -1,5 +1,8 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { useStyledDarkMode } from "gatsby-styled-components-dark-mode";
+
+import { MdWbSunny, MdBrightness3 } from "react-icons/md";
 import Logo from "./logo";
 import { Container, Blurb } from "./common";
 
@@ -25,7 +28,7 @@ const LiteEditionText = styled.div`
   font-size: 2rem;
   font-weight: bold;
 
-  padding: 5px 0 5px 15px;
+  padding: 5px 15px 5px 15px;
 
   background-image: linear-gradient(
     125deg,
@@ -45,6 +48,20 @@ const LiteEditionText = styled.div`
   -moz-text-fill-color: transparent;
 `;
 
+const LightDarkToggleStyle = css`
+  color: ${(props) => props.theme.mainColor};
+  align-self: flex-start;
+  cursor: pointer;
+`;
+
+const LightToggle = styled(MdWbSunny)`
+  ${LightDarkToggleStyle}
+`;
+
+const DarkToggle = styled(MdBrightness3)`
+  ${LightDarkToggleStyle}
+`;
+
 export default function LogoUsage() {
   const blurb1 = useStaticQuery(graphql`
     query Blurb1Query {
@@ -56,12 +73,24 @@ export default function LogoUsage() {
 
   console.log(blurb1);
 
+  const { isDark, toggleDark } = useStyledDarkMode();
+
+  const LightDarkToggle = isDark ? DarkToggle : LightToggle;
+
   return (
     <Container style={{ paddingBottom: "10px" }}>
       <LogoDescContainer>
         <div style={{ display: "flex", alignItems: "flex-end" }}>
           <Logo />
           <LiteEditionText>輕量版</LiteEditionText>
+
+          {/* <div style={{ flexGrow: 1 }} /> */}
+          <LightDarkToggle
+            onClick={() => {
+              toggleDark(!isDark);
+            }}
+            size={"25px"}
+          />
         </div>
 
         {/* <a target="_blank" href="https://github.com/Radically/HanazonoLite">
