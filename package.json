@@ -2,6 +2,7 @@
   "name": "hanazono-lite",
   "version": "1.0.0",
   "private": true,
+  "license": "MIT",
   "description": "Hanazono Lite",
   "author": "Bryan Kok <bryan.wyern1@gmail.com>",
   "keywords": [

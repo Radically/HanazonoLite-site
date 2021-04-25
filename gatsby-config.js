@@ -1,4 +1,5 @@
 module.exports = {
+  pathPrefix: "/hanazonolite",
   siteMetadata: {
     title: "Hanazono Lite",
     description:
