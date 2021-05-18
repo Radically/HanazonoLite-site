@@ -5,6 +5,9 @@ import { useLocation } from "@reach/router";
 import { useStaticQuery, graphql } from "gatsby";
 
 const SEO = ({ title, description, image, article }) => {
+  /* probably have to do this
+  https://stackoverflow.com/questions/65255746/reach-router-breaks-with-gatsby-path-prefixes
+  if adding multiple pages */
   const { pathname } = useLocation();
   const { site } = useStaticQuery(query);
   const {
@@ -18,7 +21,7 @@ const SEO = ({ title, description, image, article }) => {
   const seo = {
     title: title || defaultTitle,
     description: description || defaultDescription,
-    image: `${siteUrl}${image || defaultImage}`,
+    image: `${siteUrl}${pathname}${image || defaultImage}`,
     url: `${siteUrl}${pathname}`,
   };
   return (
@@ -70,7 +73,7 @@ const query = graphql`
       siteMetadata {
         defaultTitle: title
         defaultDescription: description
-        siteUrl: url
+        siteUrl,
         defaultImage: image
         twitterUsername
       }

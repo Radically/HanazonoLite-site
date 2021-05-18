@@ -6,8 +6,8 @@ module.exports = {
       "Lightweight, automatically generated version of the pan-CJK HanaMin font",
     url: "https://radically.github.io/hanazonolite",
     twitterUsername: "@transfusian",
-    siteUrl: "https://radically.github.io/hanazonolite",
-    image: "/ogp.png",
+    siteUrl: "https://radically.github.io",
+    image: "ogp.png",
   },
   plugins: [
     {
